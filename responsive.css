@@ -1,0 +1,142 @@
+/* Tablet */
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex;
+    }
+
+    .nav-menu {
+        position: absolute;
+        top: 70px;
+        left: 0;
+        flex-direction: column;
+        width: 100%;
+        background-color: white;
+        gap: 0;
+        padding: 1rem 0;
+        max-height: 0;
+        height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease, height 0.3s ease;
+        border-bottom: 1px solid var(--border-color);
+        visibility: hidden;
+    }
+
+    .nav-menu.active {
+        max-height: 300px;
+        height: auto;
+        visibility: visible;
+    }
+
+    .nav-menu a {
+        padding: 1rem 2rem;
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    .about-container {
+        grid-template-columns: 1fr;
+        gap: clamp(2rem, 3vw, 3rem);
+    }
+
+    .about-content {
+        order: 2;
+    }
+
+    .about-image {
+        order: 1;
+        text-align: center;
+        margin-bottom: clamp(1.5rem, 3vw, 2rem);
+    }
+
+    .about-image img {
+        width: 70%;
+        margin: 0 auto;
+    }
+
+    .contact-content {
+        grid-template-columns: 1fr;
+        gap: clamp(2rem, 3vw, 3rem);
+    }
+
+    .gallery-image {
+        flex: 0 0 calc(50% - 0.75rem);
+        width: calc(50% - 0.75rem);
+        height: auto;
+        aspect-ratio: 3 / 4;
+    }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+    .nav-logo span {
+        display: none;
+    }
+
+    body {
+        font-size: clamp(1rem, 2vw, 1.1rem);
+    }
+
+    p {
+        font-size: clamp(1rem, 2.5vw, 1.1rem);
+    }
+
+    .about-content p,
+    .about-text {
+        font-size: clamp(1rem, 2.5vw, 1.1rem);
+    }
+
+    .gallery-header p {
+        font-size: clamp(1rem, 2.5vw, 1.1rem);
+    }
+
+    .legal-page p,
+    .legal-page ul {
+        font-size: clamp(1rem, 2.5vw, 1.1rem);
+    }
+
+    .contact-left h3,
+    .contact-right h3 {
+        font-size: clamp(1.2rem, 2.5vw, 1.35rem);
+    }
+
+    .contact-subtitle {
+        font-size: clamp(0.95rem, 2vw, 1.05rem);
+    }
+
+    .method-label {
+        font-size: clamp(0.9rem, 1.8vw, 1rem);
+    }
+
+    .method-value {
+        font-size: clamp(0.95rem, 2vw, 1.05rem);
+    }
+
+    .contact-methods {
+        gap: clamp(1rem, 2vw, 1.5rem);
+    }
+
+    .contact-method {
+        gap: clamp(0.75rem, 1.5vw, 1rem);
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+        font-size: clamp(1rem, 2vw, 1.05rem);
+    }
+
+    .gallery-image {
+        flex: 0 0 100%;
+        width: 100%;
+        height: auto;
+        aspect-ratio: 3 / 4;
+    }
+
+    .method-icon {
+        width: clamp(28px, 5vw, 32px);
+        height: clamp(28px, 5vw, 32px);
+        min-width: clamp(28px, 5vw, 32px);
+    }
+}
