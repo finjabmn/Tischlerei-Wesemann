@@ -32,24 +32,40 @@
         border-bottom: 1px solid var(--border-color);
     }
 
+    /* Reihenfolge auf Mobile: Überschrift, dann Bild, dann Text.
+       display: contents macht h2 und Absätze zu direkten Grid-Items,
+       damit sie einzeln sortiert werden können. Abstände kommen
+       dadurch aus den Margins statt aus dem Grid-Gap. */
     .about-container {
         grid-template-columns: 1fr;
-        gap: clamp(2rem, 3vw, 3rem);
+        gap: 0;
     }
 
     .about-content {
-        order: 2;
+        display: contents;
+    }
+
+    .about-content h2 {
+        order: 1;
+        /* Abstand zum Bild kommt allein aus dessen margin-top,
+           damit oben und unten gleich viel Luft bleibt */
+        margin-bottom: 0;
     }
 
     .about-image {
-        order: 1;
+        order: 2;
         text-align: center;
+        margin-top: clamp(1.5rem, 3vw, 2rem);
         margin-bottom: clamp(1.5rem, 3vw, 2rem);
     }
 
     .about-image img {
         width: 70%;
         margin: 0 auto;
+    }
+
+    .about-text {
+        order: 3;
     }
 
     .contact-content {
