@@ -230,10 +230,13 @@ body {
 
 .gallery-counter {
     max-width: 1200px;
-    margin: 0 auto clamp(1rem, 2vw, 1.5rem) auto;
+    margin: clamp(1.25rem, 2.5vw, 1.75rem) auto 0 auto;
+    text-align: center;
     font-size: clamp(0.8rem, 1.4vw, 0.9rem);
     color: var(--text-light);
     font-weight: 500;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.5px;
 }
 
 .gallery-container {

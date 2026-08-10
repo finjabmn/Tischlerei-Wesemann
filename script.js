@@ -29,6 +29,7 @@ const galleryViewport = document.getElementById('galleryViewport');
 const galleryTrack = document.getElementById('galleryTrack');
 const prevBtn = document.getElementById('prevBtn');
 const nextBtn = document.getElementById('nextBtn');
+const galleryCounter = document.getElementById('galleryCounter');
 
 if (galleryViewport && galleryTrack && prevBtn && nextBtn) {
     const realSlides = Array.from(galleryTrack.children);
@@ -64,6 +65,13 @@ if (galleryViewport && galleryTrack && prevBtn && nextBtn) {
         galleryTrack.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
     };
 
+    // Klon-Position auf den echten Bildindex zurückrechnen
+    const updateCounter = () => {
+        if (!galleryCounter) return;
+        const realIndex = ((currentIndex - cloneCount) % realCount + realCount) % realCount;
+        galleryCounter.textContent = `${realIndex + 1} / ${realCount}`;
+    };
+
     const updateSizes = () => {
         const visibleCount = getVisibleCount();
         const gap = getGap();
@@ -83,6 +91,7 @@ if (galleryViewport && galleryTrack && prevBtn && nextBtn) {
         isAnimating = true;
         currentIndex = index;
         setPosition(true);
+        updateCounter();
     };
 
     galleryTrack.addEventListener('transitionend', (e) => {
@@ -138,6 +147,7 @@ if (galleryViewport && galleryTrack && prevBtn && nextBtn) {
 
     // Initial setup
     updateSizes();
+    updateCounter();
 
     let resizeTimeout;
     window.addEventListener('resize', () => {
