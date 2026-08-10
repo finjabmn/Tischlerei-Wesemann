@@ -9,6 +9,11 @@ if (hamburger) {
         hamburger.setAttribute('aria-label', isOpen ? 'Menü schließen' : 'Menü öffnen');
     };
 
+    const closeMenu = () => {
+        navMenu.classList.remove('active');
+        syncMenuState();
+    };
+
     hamburger.addEventListener('click', () => {
         navMenu.classList.toggle('active');
         syncMenuState();
@@ -17,10 +22,23 @@ if (hamburger) {
     // Close menu when a link is clicked
     const navLinks = navMenu.querySelectorAll('a');
     navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            navMenu.classList.remove('active');
-            syncMenuState();
-        });
+        link.addEventListener('click', closeMenu);
+    });
+
+    // Close menu with the Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && navMenu.classList.contains('active')) {
+            closeMenu();
+            hamburger.focus();
+        }
+    });
+
+    // Close menu when clicking outside of it
+    document.addEventListener('click', (e) => {
+        if (!navMenu.classList.contains('active')) return;
+        if (!navMenu.contains(e.target) && !hamburger.contains(e.target)) {
+            closeMenu();
+        }
     });
 }
 

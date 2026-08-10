@@ -26,12 +26,18 @@ body {
 }
 
 /* Navigation */
-.navbar {
-    background-color: var(--bg-white);
-    border-bottom: 1px solid var(--border-color);
+/* Sticky muss auf dem <header> sitzen, nicht auf .navbar:
+   ein Sticky-Element klebt nur innerhalb seines Elternelements,
+   und <header> ist genauso hoch wie die Navbar selbst. */
+header {
     position: sticky;
     top: 0;
     z-index: 100;
+}
+
+.navbar {
+    background-color: var(--bg-white);
+    border-bottom: 1px solid var(--border-color);
 }
 
 .nav-container {
@@ -89,6 +95,8 @@ body {
     background: none;
     border: none;
     padding: 0;
+    position: relative;
+    z-index: 110;
 }
 
 .hamburger span {
@@ -96,7 +104,20 @@ body {
     width: 25px;
     background-color: var(--text-dark);
     margin: 5px 0;
-    transition: 0.3s;
+    transition: transform 0.3s ease, opacity 0.2s ease;
+}
+
+/* Burger wird zum X, sobald das Menü offen ist */
+.hamburger[aria-expanded="true"] span:nth-child(1) {
+    transform: translateY(12px) rotate(45deg);
+}
+
+.hamburger[aria-expanded="true"] span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger[aria-expanded="true"] span:nth-child(3) {
+    transform: translateY(-12px) rotate(-45deg);
 }
 
 /* Hero Section */
