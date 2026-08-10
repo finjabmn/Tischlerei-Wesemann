@@ -11,9 +11,9 @@
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
-            <div class="nav-logo">
+            <a href="index.html" class="nav-logo">
                 <img src="images/logo_Wesemann.png" alt="Tischlerei Wesemann Logo">
-            </div>
+            </a>
             <div class="nav-menu" id="navMenu">
                 <a href="#about">Über uns</a>
                 <a href="#gallery">Galerie</a>
@@ -44,7 +44,7 @@
             </div>
             <div class="about-content">
                 <h2>Willkommen bei der Tischlerei Wesemann!</h2>
-                <p class="about-text">Ich bin Tischlermeister und führe seit vielen Jahren meine eigene Tischlerei. Mit Leidenschaft für das Handwerk und einem hohen Anspruch an Qualität begleite ich meine Kundinnen und Kunden von der ersten Idee bis zur fertigen Umsetzung.</p>
+                <p class="about-text">Ich bin Tischlermeister mit 36 Jahren Berufserfahrung und führe seit 2005 meine eigene Tischlerei. Mit Leidenschaft für das Handwerk und einem hohen Anspruch an Qualität begleite ich meine Kundinnen und Kunden von der ersten Idee bis zur fertigen Umsetzung.</p>
 
                 <p class="about-text">Gemeinsam mit der Zimmerei Heinz Wesemann biete ich ein breites Leistungsspektrum rund um Tischler- und Zimmerarbeiten. Ob Dachsanierung, Carports, maßgefertigte Einbaumöbel oder An- und Ausbauten, jedes Projekt wird sorgfältig geplant und fachgerecht umgesetzt.</p>
 
@@ -61,22 +61,24 @@
         </div>
         <div class="gallery-container">
             <button class="gallery-nav prev" id="prevBtn">❮</button>
-            <div class="gallery-slider" id="gallerySlider">
-                <img src="images/Schranktür.webp" alt="Schranktür" class="gallery-image">
-                <img src="images/Büroregal.webp" alt="Büroregal" class="gallery-image">
-                <img src="images/Büroschrank.webp" alt="Büroschrank" class="gallery-image">
-                <img src="images/Carport.webp" alt="Carport" class="gallery-image">
-                <img src="images/Einbauschrank.webp" alt="Einbauschrank" class="gallery-image">
-                <img src="images/Haus.webp" alt="Haus" class="gallery-image">
-                <img src="images/Holzhaus.webp" alt="Holzhaus" class="gallery-image">
-                <img src="images/Kirchenbank.webp" alt="Kirchenbank" class="gallery-image">
-                <img src="images/Kirchenbank_nah.webp" alt="Kirchenbank Detail" class="gallery-image">
-                <img src="images/Treppe.webp" alt="Treppe" class="gallery-image">
-                <img src="images/Treppenstufen.webp" alt="Treppenstufen" class="gallery-image">
-                <img src="images/Treppe_nah.webp" alt="Treppe Detail" class="gallery-image">
-                <img src="images/Wandschrank.webp" alt="Wandschrank" class="gallery-image">
-                <img src="images/Wintergarten.webp" alt="Wintergarten" class="gallery-image">
-                <img src="images/Überdachung.webp" alt="Überdachung" class="gallery-image">
+            <div class="gallery-viewport" id="galleryViewport">
+                <div class="gallery-track" id="galleryTrack">
+                    <img src="images/Schranktür.webp" alt="Schranktür" class="gallery-image">
+                    <img src="images/Büroregal.webp" alt="Büroregal" class="gallery-image">
+                    <img src="images/Büroschrank.webp" alt="Büroschrank" class="gallery-image">
+                    <img src="images/Carport.webp" alt="Carport" class="gallery-image">
+                    <img src="images/Einbauschrank.webp" alt="Einbauschrank" class="gallery-image">
+                    <img src="images/Haus.webp" alt="Haus" class="gallery-image">
+                    <img src="images/Holzhaus.webp" alt="Holzhaus" class="gallery-image">
+                    <img src="images/Kirchenbank.webp" alt="Kirchenbank" class="gallery-image">
+                    <img src="images/Kirchenbank_nah.webp" alt="Kirchenbank Detail" class="gallery-image">
+                    <img src="images/Treppe.webp" alt="Treppe" class="gallery-image">
+                    <img src="images/Treppenstufen.webp" alt="Treppenstufen" class="gallery-image">
+                    <img src="images/Treppe_nah.webp" alt="Treppe Detail" class="gallery-image">
+                    <img src="images/Wandschrank.webp" alt="Wandschrank" class="gallery-image">
+                    <img src="images/Wintergarten.webp" alt="Wintergarten" class="gallery-image">
+                    <img src="images/Überdachung.webp" alt="Überdachung" class="gallery-image">
+                </div>
             </div>
             <button class="gallery-nav next" id="nextBtn">❯</button>
         </div>
@@ -141,14 +143,49 @@
                     <h3>Nachricht senden</h3>
                     <p class="contact-subtitle">Füllen Sie das Formular aus und ich werde mich bald bei Ihnen melden</p>
 
-                    <form class="contact-form" id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                    <!-- Formspree-Formular-ID steht in der action-URL: /f/DEINE_ID -->
+                    <form class="contact-form" id="contactForm" action="https://formspree.io/f/mqpzpwyj" method="POST">
                         <div class="form-row">
-                            <input type="text" name="vorname" placeholder="Vorname" required>
-                            <input type="text" name="nachname" placeholder="Nachname" required>
+                            <div class="form-field">
+                                <label for="vorname">Vorname</label>
+                                <input type="text" id="vorname" name="vorname" autocomplete="given-name" required>
+                            </div>
+                            <div class="form-field">
+                                <label for="nachname">Nachname</label>
+                                <input type="text" id="nachname" name="nachname" autocomplete="family-name" required>
+                            </div>
                         </div>
-                        <input type="email" name="email" placeholder="E-Mail oder Telefon" required>
-                        <textarea name="nachricht" placeholder="Ihre Nachricht..." rows="6" required></textarea>
+
+                        <div class="form-row">
+                            <div class="form-field">
+                                <label for="email">E-Mail-Adresse</label>
+                                <input type="email" id="email" name="email" autocomplete="email" required>
+                            </div>
+                            <div class="form-field">
+                                <label for="telefon">Telefonnummer <span class="form-optional">(optional)</span></label>
+                                <input type="tel" id="telefon" name="telefon" autocomplete="tel">
+                            </div>
+                        </div>
+
+                        <div class="form-field">
+                            <label for="message">Ihre Nachricht</label>
+                            <textarea id="message" name="message" rows="6" required></textarea>
+                        </div>
+
+                        <div class="form-consent">
+                            <input type="checkbox" id="datenschutz" name="datenschutz" value="Zugestimmt" required>
+                            <label for="datenschutz">Ich habe die <a href="datenschutz.html">Datenschutzerklärung</a> gelesen und stimme der Verarbeitung meiner Daten zu.</label>
+                        </div>
+
+                        <!-- Honeypot: für Nutzer unsichtbar und nicht per Tastatur erreichbar -->
+                        <div class="form-honeypot" aria-hidden="true">
+                            <label for="_gotcha">Dieses Feld bitte leer lassen</label>
+                            <input type="text" id="_gotcha" name="_gotcha" tabindex="-1" autocomplete="off">
+                        </div>
+
                         <button type="submit" class="form-button">Nachricht senden</button>
+
+                        <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
                     </form>
                 </div>
             </div>
@@ -158,7 +195,7 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-content">
-            <p>&copy; 2026 Tischlerei Wesemann.</p>
+            <p>&copy; 2026 Tischlerei Wesemann</p>
             <div class="footer-links">
                 <a href="impressum.html">Impressum</a>
                 <a href="datenschutz.html">Datenschutz</a>

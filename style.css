@@ -52,6 +52,12 @@ body {
     color: var(--primary-color);
     text-decoration: none;
     letter-spacing: -0.5px;
+    transition: opacity 0.3s ease;
+    cursor: pointer;
+}
+
+.nav-logo:hover {
+    opacity: 0.8;
 }
 
 .nav-logo img {
@@ -135,9 +141,8 @@ body {
 }
 
 .cta-button:hover {
-    background-color: #b45309;
-    border-color: #b45309;
-    transform: translateY(-2px);
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
 }
 
 /* About Section */
@@ -236,29 +241,26 @@ body {
     gap: clamp(0.5rem, 2vw, 1rem);
 }
 
-.gallery-slider {
-    display: flex;
-    gap: clamp(1rem, 2vw, 1.5rem);
-    overflow-x: auto;
-    scroll-behavior: smooth;
-    scrollbar-width: none;
+.gallery-viewport {
     flex: 1;
+    overflow: hidden;
     padding: clamp(0.5rem, 1vw, 1rem) 0;
 }
 
-.gallery-slider::-webkit-scrollbar {
-    display: none;
+.gallery-track {
+    display: flex;
+    gap: clamp(1rem, 2vw, 1.5rem);
+    will-change: transform;
 }
 
 .gallery-image {
-    flex: 0 0 calc(33.333% - 1rem);
-    width: calc(33.333% - 1rem);
+    flex-shrink: 0;
     height: auto;
     aspect-ratio: 3 / 4;
     object-fit: cover;
     display: block;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: transform 0.3s ease;
 }
 
 .gallery-image:hover {
@@ -266,7 +268,7 @@ body {
 }
 
 .gallery-nav {
-    background-color: var(--primary-color);
+    background-color: var(--secondary-color);
     color: white;
     border: none;
     padding: clamp(8px, 1.5vw, 12px) clamp(12px, 2vw, 16px);
@@ -282,8 +284,7 @@ body {
 }
 
 .gallery-nav:hover {
-    background-color: var(--secondary-color);
-    transform: scale(1.05);
+    background-color: var(--primary-color);
 }
 
 /* Lightbox */
@@ -505,8 +506,91 @@ body {
 }
 
 .form-button:hover {
-    background-color: #b45309;
-    transform: translateY(-2px);
+    background-color: var(--primary-color);
+}
+
+.form-button:disabled {
+    background-color: var(--text-light);
+    cursor: not-allowed;
+}
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(0.3rem, 0.6vw, 0.4rem);
+}
+
+.form-field label {
+    color: var(--text-dark);
+    font-weight: 600;
+    font-size: clamp(0.8rem, 1.4vw, 0.9rem);
+}
+
+.form-optional {
+    color: var(--text-light);
+    font-weight: 400;
+}
+
+.form-consent {
+    display: flex;
+    align-items: flex-start;
+    gap: clamp(0.6rem, 1.2vw, 0.75rem);
+}
+
+.form-consent input[type="checkbox"] {
+    width: auto;
+    margin-top: 0.25rem;
+    flex-shrink: 0;
+    accent-color: var(--secondary-color);
+}
+
+.form-consent label {
+    color: var(--text-light);
+    font-size: clamp(0.8rem, 1.4vw, 0.9rem);
+    line-height: 1.6;
+}
+
+.form-consent a {
+    color: var(--secondary-color);
+    text-decoration: underline;
+}
+
+.form-consent a:hover {
+    color: var(--primary-color);
+}
+
+/* Honeypot: unsichtbar, nicht fokussierbar, aber im DOM vorhanden */
+.form-honeypot {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+/* Status-Meldungen */
+.form-status {
+    display: none;
+    padding: clamp(0.75rem, 1.5vw, 1rem) clamp(1rem, 2vw, 1.25rem);
+    font-size: clamp(0.85rem, 1.5vw, 0.95rem);
+    line-height: 1.6;
+    border-left: 3px solid transparent;
+}
+
+.form-status.is-visible {
+    display: block;
+}
+
+.form-status.is-success {
+    background-color: #f0fdf4;
+    border-left-color: #16a34a;
+    color: #15803d;
+}
+
+.form-status.is-error {
+    background-color: #fef2f2;
+    border-left-color: #dc2626;
+    color: #b91c1c;
 }
 
 /* Footer */
