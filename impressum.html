@@ -3,47 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Impressum - Tischlerei Wesemann</title>
+    <meta name="robots" content="index, follow">
+
+    <title>Impressum | Tischlerei Oliver Wesemann in Hude</title>
+    <meta name="description" content="Impressum der Tischlerei Oliver Wesemann, Im Gewerbepark 3 in 27798 Hude. Anbieterkennzeichnung, Kontaktdaten, Berufsbezeichnung und Umsatzsteuer-ID.">
+
+    <!-- TODO: DEINE-DOMAIN.de überall durch die echte Domain ersetzen -->
+    <link rel="canonical" href="https://DEINE-DOMAIN.de/impressum.html">
+
+    <!-- Open Graph / Vorschau beim Teilen -->
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="de_DE">
+    <meta property="og:site_name" content="Tischlerei Oliver Wesemann">
+    <meta property="og:title" content="Impressum | Tischlerei Oliver Wesemann in Hude">
+    <meta property="og:description" content="Impressum der Tischlerei Oliver Wesemann, Im Gewerbepark 3 in 27798 Hude. Anbieterkennzeichnung, Kontaktdaten, Berufsbezeichnung und Umsatzsteuer-ID.">
+    <meta property="og:url" content="https://DEINE-DOMAIN.de/impressum.html">
+    <meta property="og:image" content="https://DEINE-DOMAIN.de/images/Haus.jpg">
+    <meta property="og:image:alt" content="Saniertes Fachwerkhaus mit neu gedecktem Ziegeldach der Tischlerei Wesemann">
+    <meta name="twitter:card" content="summary_large_image">
+
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="responsive.css">
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <a href="index.html" class="nav-logo">
-                <img src="images/logo_Wesemann.png" alt="Tischlerei Wesemann Logo">
-            </a>
-            <div class="nav-menu" id="navMenu">
-                <a href="index.html#about">Über uns</a>
-                <a href="index.html#gallery">Galerie</a>
-                <a href="index.html#contact">Kontakt</a>
+    <header>
+        <nav class="navbar" aria-label="Hauptnavigation">
+            <div class="nav-container">
+                <a href="index.html" class="nav-logo">
+                    <img src="images/logo_Wesemann.png" alt="Tischlerei Oliver Wesemann, Hude – zur Startseite" width="200" height="100">
+                </a>
+                <div class="nav-menu" id="navMenu">
+                    <a href="index.html#about">Über uns</a>
+                    <a href="index.html#gallery">Galerie</a>
+                    <a href="index.html#contact">Kontakt</a>
+                </div>
+                <button class="hamburger" id="hamburger" type="button" aria-label="Menü öffnen" aria-controls="navMenu" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
             </div>
-            <div class="hamburger" id="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </div>
-    </nav>
+        </nav>
+    </header>
 
+    <main>
     <!-- Impressum Section -->
-    <section class="legal-page">
+    <section class="legal-page" aria-labelledby="impressum-heading">
         <div class="legal-container">
-            <h1>Impressum</h1>
+            <h1 id="impressum-heading">Impressum</h1>
 
             <h2>Angaben gemäß § 5 TMG</h2>
-
-            <h2>Betreiber & Kontakt</h2>
             <p>
                 <strong>Tischlerei Oliver Wesemann</strong><br>
                 Inhaber: Oliver Wesemann<br>
                 Im Gewerbepark 3<br>
                 27798 Hude
-            
-                <br><br>
-                <strong>Telefon:</strong> <a href="tel:01747219882">0174 7219882</a><br>
-                <strong>Alternativ:</strong> <a href="tel:044086026">04408 60261</a><br>
+            </p>
+
+            <h2>Kontakt</h2>
+            <p>
+                <strong>Telefon:</strong> <a href="tel:+491747219882">0174 7219882</a><br>
+                <strong>Alternativ:</strong> <a href="tel:+49440860261">04408 60261</a><br>
                 <strong>E-Mail:</strong> <a href="mailto:oliver.wesemann1@ewetel.net">oliver.wesemann1@ewetel.net</a>
             </p>
 
@@ -61,15 +81,16 @@
 
         </div>
     </section>
+    </main>
 
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-content">
-            <p>&copy; 2026 Tischlerei Wesemann. Alle Rechte vorbehalten.</p>
-            <div class="footer-links">
+            <p>&copy; 2026 Tischlerei Wesemann</p>
+            <nav class="footer-links" aria-label="Rechtliches">
                 <a href="impressum.html">Impressum</a>
                 <a href="datenschutz.html">Datenschutz</a>
-            </div>
+            </nav>
         </div>
     </footer>
 

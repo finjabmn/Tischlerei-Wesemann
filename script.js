@@ -3,8 +3,15 @@ const hamburger = document.getElementById('hamburger');
 const navMenu = document.getElementById('navMenu');
 
 if (hamburger) {
+    const syncMenuState = () => {
+        const isOpen = navMenu.classList.contains('active');
+        hamburger.setAttribute('aria-expanded', String(isOpen));
+        hamburger.setAttribute('aria-label', isOpen ? 'Menü schließen' : 'Menü öffnen');
+    };
+
     hamburger.addEventListener('click', () => {
         navMenu.classList.toggle('active');
+        syncMenuState();
     });
 
     // Close menu when a link is clicked
@@ -12,6 +19,7 @@ if (hamburger) {
     navLinks.forEach(link => {
         link.addEventListener('click', () => {
             navMenu.classList.remove('active');
+            syncMenuState();
         });
     });
 }
