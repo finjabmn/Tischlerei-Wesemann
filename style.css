@@ -12,6 +12,9 @@
     --bg-light: #f3f4f6;
     --bg-white: #ffffff;
     --border-color: #e5e7eb;
+
+    /* Höhe der Navbar: Innenabstand oben+unten + Logo + Rahmen */
+    --nav-height: calc(clamp(0.75rem, 2vw, 1.25rem) * 2 + clamp(40px, 8vw, 50px) + 1px);
 }
 
 html {
@@ -38,6 +41,12 @@ header {
 .navbar {
     background-color: var(--bg-white);
     border-bottom: 1px solid var(--border-color);
+    position: relative;
+}
+
+/* Sprungziele nicht unter der Navbar landen lassen */
+section[id] {
+    scroll-margin-top: var(--nav-height);
 }
 
 .nav-container {

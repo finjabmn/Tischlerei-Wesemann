@@ -1,5 +1,19 @@
 /* Tablet */
 @media (max-width: 768px) {
+    /* Fest fixiert statt sticky: mobile Browser verändern beim Scrollen
+       die Viewport-Höhe, wodurch sticky sichtbar springt.
+       Der Body gleicht die fehlende Höhe im Fluss wieder aus. */
+    header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+    }
+
+    body {
+        padding-top: var(--nav-height);
+    }
+
     .hamburger {
         display: flex;
     }
