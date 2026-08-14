@@ -14,50 +14,6 @@
         padding-top: var(--nav-height);
     }
 
-    .hamburger {
-        display: flex;
-    }
-
-    /* Dropdown direkt unter der Navbar.
-       Absolut positioniert, dadurch braucht die Einblendung
-       keine Höhenanimation mit festem Maximalwert. */
-    .nav-menu {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background-color: var(--bg-white);
-        border-bottom: 1px solid var(--border-color);
-        flex-direction: column;
-        align-items: stretch;
-        gap: 0;
-        padding: clamp(1rem, 4vw, 1.5rem) clamp(1.5rem, 6vw, 2rem) clamp(1.5rem, 5vw, 2rem);
-        opacity: 0;
-        visibility: hidden;
-        transform: translateY(-8px);
-        transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
-    }
-
-    .nav-menu.active {
-        opacity: 1;
-        visibility: visible;
-        transform: translateY(0);
-    }
-
-    .nav-menu a {
-        border-bottom: none;
-        padding: clamp(0.55rem, 2.5vw, 0.75rem) 0;
-        font-size: clamp(1.35rem, 5.5vw, 1.6rem);
-        font-weight: 500;
-        line-height: 1.3;
-        letter-spacing: -0.3px;
-        color: var(--primary-color);
-    }
-
-    .nav-menu a:hover {
-        color: var(--secondary-color);
-    }
-
     /* Reihenfolge auf Mobile: Überschrift, dann Bild, dann Text.
        display: contents macht h2 und Absätze zu direkten Grid-Items,
        damit sie einzeln sortiert werden können. Abstände kommen
