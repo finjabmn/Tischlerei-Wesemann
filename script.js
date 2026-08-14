@@ -174,37 +174,6 @@ if (galleryViewport && galleryTrack && prevBtn && nextBtn) {
     });
 }
 
-// Modal Functions
-function showImpressum(e) {
-    e.preventDefault();
-    const modal = document.getElementById('impressumModal');
-    if (modal) {
-        modal.classList.add('show');
-    }
-}
-
-function showDatenschutz(e) {
-    e.preventDefault();
-    const modal = document.getElementById('datenschutzModal');
-    if (modal) {
-        modal.classList.add('show');
-    }
-}
-
-function closeModal(modalId) {
-    const modal = document.getElementById(modalId);
-    if (modal) {
-        modal.classList.remove('show');
-    }
-}
-
-// Close modal when clicking outside the modal content
-window.addEventListener('click', (e) => {
-    if (e.target.classList.contains('modal')) {
-        e.target.classList.remove('show');
-    }
-});
-
 // Lightbox functionality
 const lightboxModal = document.getElementById('lightboxModal');
 const lightboxImage = document.querySelector('.lightbox-image');
@@ -293,18 +262,13 @@ if (contactForm && formStatus) {
     });
 }
 
-// Smooth scroll for navigation links
+// Smooth scroll for in-page anchor links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
-        const href = this.getAttribute('href');
-        if (href !== '#impressum' && href !== '#datenschutz') {
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
             e.preventDefault();
-            const target = document.querySelector(href);
-            if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth'
-                });
-            }
+            target.scrollIntoView({ behavior: 'smooth' });
         }
     });
 });

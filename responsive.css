@@ -1,4 +1,13 @@
-/* Tablet */
+/* ==========================================================================
+   responsive.css – ausschließlich Media Queries.
+   Basisstile (Mobile-first) stehen in style.css; hier folgen nur
+   Anpassungen für größere Bildschirme sowie Sonderfälle für sehr
+   kleine Geräte und reduzierte Bewegung.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------
+   Tablet und kleiner (≤768px)
+   -------------------------------------------------------------------- */
 @media (max-width: 768px) {
     /* Fest fixiert statt sticky: mobile Browser verändern beim Scrollen
        die Viewport-Höhe, wodurch sticky sichtbar springt.
@@ -14,7 +23,7 @@
         padding-top: var(--nav-height);
     }
 
-    /* Reihenfolge auf Mobile: Überschrift, dann Bild, dann Text.
+    /* Reihenfolge im About-Bereich: Überschrift, dann Bild, dann Text.
        display: contents macht h2 und Absätze zu direkten Grid-Items,
        damit sie einzeln sortiert werden können. Abstände kommen
        dadurch aus den Margins statt aus dem Grid-Gap. */
@@ -29,8 +38,6 @@
 
     .about-content h2 {
         order: 1;
-        /* Abstand zum Bild kommt allein aus dessen margin-top,
-           damit oben und unten gleich viel Luft bleibt */
         margin-bottom: 0;
     }
 
@@ -54,44 +61,47 @@
         grid-template-columns: 1fr;
         gap: clamp(2rem, 3vw, 3rem);
     }
+}
 
-    .contact-methods {
-        grid-template-columns: 1fr;
-        gap: clamp(1.5rem, 3vw, 2rem);
+/* --------------------------------------------------------------------
+   Desktop (≥769px): kompaktes, rechtsbündig andockendes Dropdown-Panel
+   statt des vollbreiten mobilen Blocks.
+   -------------------------------------------------------------------- */
+@media (min-width: 769px) {
+    .nav-menu {
+        left: auto;
+        right: calc(var(--nav-pad-x) + clamp(0.5rem, 2vw, 1rem));
+        width: auto;
+        min-width: 240px;
+        align-items: stretch;
+        text-align: left;
+        border: 1px solid var(--border-color);
+        border-top: none;
+        padding: 0.5rem;
+    }
+
+    .nav-menu a {
+        font-size: 1rem;
+        font-weight: 500;
+        letter-spacing: 0;
+        padding: 0.85rem 1rem;
+    }
+
+    .nav-menu a:hover {
+        background-color: var(--bg-light);
     }
 }
 
-/* Mobile */
+/* --------------------------------------------------------------------
+   Kleine Smartphones (≤480px)
+   -------------------------------------------------------------------- */
 @media (max-width: 480px) {
-    .nav-logo span {
-        display: none;
+    .contact-methods {
+        gap: clamp(1rem, 2vw, 1.5rem);
     }
 
-    body {
-        font-size: clamp(1rem, 2vw, 1.1rem);
-    }
-
-    p {
-        font-size: clamp(1rem, 2.5vw, 1.1rem);
-    }
-
-    .about-content p,
-    .about-text {
-        font-size: clamp(1rem, 2.5vw, 1.1rem);
-    }
-
-    .gallery-header p {
-        font-size: clamp(1rem, 2.5vw, 1.1rem);
-    }
-
-    .legal-page p,
-    .legal-page ul {
-        font-size: clamp(1rem, 2.5vw, 1.1rem);
-    }
-
-    .contact-left h3,
-    .contact-right h3 {
-        font-size: clamp(1.2rem, 2.5vw, 1.35rem);
+    .contact-method {
+        gap: clamp(0.75rem, 1.5vw, 1rem);
     }
 
     .contact-subtitle {
@@ -106,26 +116,33 @@
         font-size: clamp(0.95rem, 2vw, 1.05rem);
     }
 
-    .contact-methods {
-        gap: clamp(1rem, 2vw, 1.5rem);
-    }
-
-    .contact-method {
-        gap: clamp(0.75rem, 1.5vw, 1rem);
-    }
-
     .form-row {
         grid-template-columns: 1fr;
     }
 
+    /* Mindestens 16px, damit iOS Safari beim Fokussieren nicht hineinzoomt */
     .contact-form input,
     .contact-form textarea {
         font-size: clamp(1rem, 2vw, 1.05rem);
     }
+}
 
-    .method-icon {
-        width: clamp(28px, 5vw, 32px);
-        height: clamp(28px, 5vw, 32px);
-        min-width: clamp(28px, 5vw, 32px);
+/* --------------------------------------------------------------------
+   Reduzierte Bewegung: Animationen und Übergänge auf ein Minimum
+   verkürzen statt sie komplett zu entfernen (bleibt so funktional
+   nachvollziehbar, wirkt aber praktisch wie „aus").
+   -------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
     }
 }
