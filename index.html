@@ -116,32 +116,44 @@
     <section id="gallery" class="gallery" aria-labelledby="gallery-heading">
         <div class="gallery-header">
             <h2 id="gallery-heading">Unsere Arbeiten</h2>
-            <p>Klicken Sie sich durch unsere Bildergalerie und lassen Sie sich von unseren Projekten inspirieren.</p>
+            <p>Schauen Sie sich unsere Bildergalerie an und lassen Sie sich von unseren Projekten inspirieren.</p>
         </div>
-        <div class="gallery-container">
-            <button class="gallery-nav prev" id="prevBtn" type="button" aria-label="Vorheriges Bild">❮</button>
-            <div class="gallery-viewport" id="galleryViewport">
-                <div class="gallery-track" id="galleryTrack">
-                    <img src="images/Schranktür.webp" alt="Maßgefertigte Schranktür aus Holz vom Tischler" class="gallery-image" loading="lazy" decoding="async">
-                    <img src="images/Büroregal.webp" alt="Eingebautes Büroregal aus Holz nach Maß gefertigt" class="gallery-image" loading="lazy" decoding="async">
-                    <img src="images/Büroschrank.webp" alt="Maßgefertigter Büroschrank aus Holz" class="gallery-image" loading="lazy" decoding="async">
-                    <img src="images/Carport.webp" alt="Carport aus Holz, gebaut von der Tischlerei Wesemann" class="gallery-image" loading="lazy" decoding="async">
-                    <img src="images/Einbauschrank.webp" alt="Einbauschrank aus Holz, passgenau in eine Nische gearbeitet" class="gallery-image" loading="lazy" decoding="async">
-                    <img src="images/Haus.webp" alt="Saniertes Fachwerkhaus mit neu gedecktem Ziegeldach und grünem Fachwerk" class="gallery-image" loading="lazy" decoding="async">
-                    <img src="images/Holzhaus.webp" alt="Nebengebäude in Holzbauweise mit senkrechter Holzfassade und Ziegeldach" class="gallery-image" loading="lazy" decoding="async">
-                    <img src="images/Kirchenbank.webp" alt="Aufgearbeitete Kirchenbank aus Massivholz" class="gallery-image" loading="lazy" decoding="async">
-                    <img src="images/Kirchenbank_nah.webp" alt="Detailaufnahme der Holzverbindung einer Kirchenbank" class="gallery-image" loading="lazy" decoding="async">
-                    <img src="images/Treppe.webp" alt="Holztreppe nach Maß, gefertigt von der Tischlerei Wesemann" class="gallery-image" loading="lazy" decoding="async">
-                    <img src="images/Treppenstufen.webp" alt="Massive Treppenstufen aus Holz" class="gallery-image" loading="lazy" decoding="async">
-                    <img src="images/Treppe_nah.webp" alt="Detailaufnahme einer Holztreppe mit sichtbarer Maserung" class="gallery-image" loading="lazy" decoding="async">
-                    <img src="images/Wandschrank.webp" alt="Maßgefertigter Wandschrank aus Holz" class="gallery-image" loading="lazy" decoding="async">
-                    <img src="images/Wintergarten.webp" alt="Wintergarten mit Holzkonstruktion vom Tischler" class="gallery-image" loading="lazy" decoding="async">
-                    <img src="images/Überdachung.webp" alt="Terrassenüberdachung aus Holz" class="gallery-image" loading="lazy" decoding="async">
-                </div>
-            </div>
-            <button class="gallery-nav next" id="nextBtn" type="button" aria-label="Nächstes Bild">❯</button>
+        <div class="gallery-grid">
+            <!-- Reihe 1 -->
+            <button type="button" class="gallery-item">
+                <img src="images/Holzhaus.webp" alt="Nebengebäude in Holzbauweise mit senkrechter Holzfassade und Ziegeldach" loading="lazy" decoding="async">
+            </button>
+            <button type="button" class="gallery-item">
+                <img src="images/Kirchenbank.webp" alt="Aufgearbeitete Kirchenbank aus Massivholz" loading="lazy" decoding="async">
+            </button>
+
+            <!-- Reihe 2 -->
+            <button type="button" class="gallery-item">
+                <img src="images/Haus.webp" alt="Saniertes Fachwerkhaus mit neu gedecktem Ziegeldach und grünem Fachwerk" loading="lazy" decoding="async">
+            </button>
+            <button type="button" class="gallery-item">
+                <img src="images/Wandschrank.webp" alt="Maßgefertigter Wandschrank aus Holz" loading="lazy" decoding="async">
+            </button>
+
+            <!-- Treppe (Hochformat, links, spannt zwei Reihen) + zwei gestapelte Bilder rechts -->
+            <button type="button" class="gallery-item gallery-item--portrait">
+                <img src="images/Treppe.webp" alt="Holztreppe nach Maß, gefertigt von der Tischlerei Wesemann" loading="lazy" decoding="async">
+            </button>
+            <button type="button" class="gallery-item">
+                <img src="images/Wintergarten.webp" alt="Wintergarten mit Holzkonstruktion vom Tischler" loading="lazy" decoding="async">
+            </button>
+            <button type="button" class="gallery-item">
+                <img src="images/Einbauschrank.webp" alt="Einbauschrank aus Holz, passgenau in eine Nische gearbeitet" loading="lazy" decoding="async">
+            </button>
+
+            <!-- Abschließende Reihe -->
+            <button type="button" class="gallery-item">
+                <img src="images/Carport.webp" alt="Carport aus Holz, gebaut von der Tischlerei Wesemann" loading="lazy" decoding="async">
+            </button>
+            <button type="button" class="gallery-item">
+                <img src="images/Überdachung.webp" alt="Terrassenüberdachung aus Holz" loading="lazy" decoding="async">
+            </button>
         </div>
-        <p class="gallery-counter" id="galleryCounter" role="status" aria-live="polite"></p>
     </section>
 
     <!-- Contact Section -->

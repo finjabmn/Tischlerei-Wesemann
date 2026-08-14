@@ -45,6 +45,9 @@
     /* Icon-Größe der Kontakt-Symbole */
     --icon-size: clamp(28px, 5vw, 32px);
 
+    /* Abstand zwischen den Galerie-Bildern: fluid zwischen 10 und 16px */
+    --gallery-gap: clamp(0.625rem, 1.5vw, 1rem);
+
     /* Übergänge */
     --transition-base: 0.3s ease;
 }
@@ -330,49 +333,70 @@ header {
     max-width: 600px;
 }
 
-.gallery-counter {
-    max-width: var(--container-width);
-    margin: clamp(1.25rem, 2.5vw, 1.75rem) auto 0 auto;
-    text-align: center;
-    font-size: var(--fs-xs);
-    color: var(--text-light);
-    font-weight: 500;
-    font-variant-numeric: tabular-nums;
-    letter-spacing: 0.5px;
-}
+/* Zweispaltiges Bildraster – gilt auf allen Bildschirmgrößen gleich.
+   Alle Querformat-Kacheln bekommen ein einheitliches Seitenverhältnis
+   (3:2 – das Format, in dem die meisten Originalfotos bereits
+   vorliegen, daher bei den meisten kein tatsächlicher Zuschnitt) plus
+   object-fit:cover, damit jede Zeile exakt auf derselben Höhe endet.
+   Diese Kacheln bestimmen dadurch die Zeilenhöhen des Rasters.
 
-.gallery-container {
+   Treppe.webp (.gallery-item--portrait) spannt zwei Rasterzeilen.
+   Grid berechnet die Höhe von auto-Zeilen in einem eigenen
+   Rechendurchgang, BEVOR die endgültige Höhe des Grid-Bereichs
+   feststeht – jede Prozentangabe (auch height:100%) ist in diesem
+   Moment noch unauflösbar und wird ignoriert, wodurch der Browser
+   ersatzweise auf das Seitenverhältnis des Bildes zurückfällt und die
+   Zeilen aufbläht. Der zuverlässige Ausweg: Das <img> wird per
+   position:absolute aus dem normalen Fluss genommen. Ein Element ohne
+   Inhalt im normalen Fluss trägt nichts zur Zeilenhöhen-Berechnung
+   bei, wodurch ausschließlich die beiden Querformatbilder die
+   Zeilenhöhen bestimmen. Erst danach, wenn die Zeilenhöhen bereits
+   feststehen, füllt das absolut positionierte Bild exakt den fertig
+   berechneten Bereich aus. */
+.gallery-grid {
     max-width: var(--container-width);
     margin: 0 auto;
-    display: flex;
-    align-items: center;
-    gap: clamp(0.5rem, 2vw, 1rem);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--gallery-gap);
 }
 
-.gallery-viewport {
-    flex: 1;
-    overflow: hidden;
-    padding: clamp(0.5rem, 1vw, 1rem) 0;
-}
-
-.gallery-track {
-    display: flex;
-    gap: clamp(1rem, 2vw, 1.5rem);
-    will-change: transform;
-}
-
-.gallery-image {
-    flex-shrink: 0;
-    height: auto;
-    aspect-ratio: 3 / 4;
-    object-fit: cover;
+.gallery-item {
     display: block;
+    width: 100%;
+    aspect-ratio: 3 / 2;
+    overflow: hidden;
+    position: relative;
+    background: none;
+    border: none;
+    padding: 0;
     cursor: pointer;
-    transition: transform var(--transition-base);
+    min-width: 0;
+    min-height: 0;
 }
 
-.gallery-image:hover {
-    transform: scale(1.05);
+.gallery-item img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: opacity var(--transition-base), transform var(--transition-base);
+}
+
+.gallery-item--portrait {
+    grid-row: span 2;
+    aspect-ratio: auto;
+}
+
+.gallery-item--portrait img {
+    object-position: center 35%;
+}
+
+.gallery-item:hover img,
+.gallery-item:focus-visible img {
+    opacity: 0.85;
 }
 
 /* ==========================================================================
@@ -768,26 +792,6 @@ header {
 .cta-button:hover {
     background-color: var(--primary-color);
     border-color: var(--primary-color);
-}
-
-.gallery-nav {
-    background-color: var(--secondary-color);
-    color: white;
-    border: none;
-    padding: clamp(8px, 1.5vw, 12px) clamp(12px, 2vw, 16px);
-    cursor: pointer;
-    font-size: clamp(0.9rem, 2vw, 1.1rem);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-width: clamp(40px, 8vw, 48px);
-    height: clamp(40px, 8vw, 48px);
-    flex-shrink: 0;
-    transition: background-color var(--transition-base);
-}
-
-.gallery-nav:hover {
-    background-color: var(--primary-color);
 }
 
 .form-button {
